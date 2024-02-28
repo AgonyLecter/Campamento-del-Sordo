@@ -38,23 +38,21 @@
         header img.logo {
             display: block;
             margin: 10px auto;
-            width: 144px;
+            width: 80%; /* Adjusted for better responsiveness */
+            max-width: 144px; /* Ensures the logo does not become too large */
             transition: transform 0.3s ease-in-out;
-        }
-
-        header img.logo:hover {
-            transform: scale(1.1);
         }
 
         nav ul {
             list-style: none;
             padding: 0;
             text-align: center;
+            margin-top: 20px; /* Added space above navigation links */
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            display: inline-block; /* Changed from inline for better control on mobile */
+            margin: 0 5px; /* Reduced margin for smaller screens */
         }
 
         nav ul li a {
@@ -62,11 +60,7 @@
             text-decoration: none;
             font-weight: 700;
             transition: color 0.3s ease-in-out;
-        }
-
-        nav ul li a:hover {
-            color: #f4e9d8;
-            text-decoration: underline;
+            padding: 5px 10px; /* Added padding for larger touch targets */
         }
 
         .welcome, .services, .contact, .gallery, .booking {
@@ -87,7 +81,7 @@
 
         .gallery .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Improved for responsiveness */
             gap: 15px;
         }
 
@@ -96,10 +90,6 @@
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease-in-out;
-        }
-
-        .gallery img:hover, .booking-form button:hover {
-            transform: scale(1.05);
         }
 
         .booking-form input, .booking-form button {
@@ -122,6 +112,24 @@
             text-align: center;
             padding: 20px 0;
             margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 2rem; /* Smaller font size for smaller screens */
+            }
+
+            nav ul li {
+                margin: 0 10px; /* Adjusted margin for better spacing */
+            }
+
+            .gallery .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted for smaller screens */
+            }
         }
 
         @keyframes fadeIn {
@@ -242,3 +250,4 @@ document.querySelector('.booking-form').addEventListener('submit', function(e) {
 
 </body>
 </html>
+
