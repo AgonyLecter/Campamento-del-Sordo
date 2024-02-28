@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camping del Sordo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(180deg, #f7ca88 0%, #e8dab2 100%);
+            transition: background-color 0.5s;
+            animation: fadeBackground 10s infinite alternate;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #d3a87c 0%, #e8b985 100%);
+            color: #ffffff;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            text-align: center;
+            font-family: 'Lobster', cursive;
+            font-size: 2.5rem;
+        }
+
+        header img.logo {
+            display: block;
+            margin: 10px auto;
+            width: 144px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        header img.logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: #f4e9d8;
+            text-decoration: underline;
+        }
+
+        .welcome, .services, .contact, .gallery, .booking {
+            margin-bottom: 40px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.5s forwards;
+        }
+
+        .services ul, .gallery .photo-grid, .booking-form {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gallery .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery img, .booking-form input, .booking-form button {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img:hover, .booking-form button:hover {
+            transform: scale(1.05);
+        }
+
+        .booking-form input, .booking-form button {
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            background: #e8dab2;
+            color: #333;
+        }
+
+        .booking-form button {
+            background: #d3a87c;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #a67b5b 0%, #8c6954 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeBackground {
+            0% {background: linear-gradient(180deg, #f7ca88 0%, #e8dab2 100%);}
+            100% {background: linear-gradient(180deg, #e8dab2 0%, #f7ca88 100%);}
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <img src="logo.png" alt="Logo Camping del Sordo" class="logo">
+        <h1>Campamento Punta del Sordo</h1>
+        <nav>
+            <ul>
+                <li><a href="#welcome">Bienvenidos</a></li>
+                <li><a href="#services">Servicios</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#booking">Reservas</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="welcome" id="welcome">
+        <div class="container">
+            <h2>Bienvenidos al Camping del Sordo</h2>
+            <p>Descubre el encanto único de nuestro camping, ubicado en el corazón de la naturaleza salvaje de Tenerife, a solo unos pasos del mar.</p>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Servicios Ofrecidos</h2>
+            <ul>
+                <li>Parcelas para tiendas y autocaravanas</li>
+                <li>Acceso directo a la playa</li>
+                <li>Zona de barbacoa y picnic</li>
+                <li>Duchas y servicios higiénicos</li>
+                <li>Wi-Fi gratuito</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <h2>Galería Fotográfica</h2>
+            <div class="photo-grid">
+                <img src="image1.jpg" alt="Descripción de la imagen 1">
+                <img src="image2.jpg" alt="Descripción de la imagen 2">
+            </div>
+        </div>
+    </section>
+
+    <section class="booking" id="booking">
+        <div class="container">
+            <h2>Reservas</h2>
+            <form class="booking-form">
+                <input type="text" placeholder="Nombre completo" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="date" required>
+                <button type="submit">Reservar Ahora</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>Para reservas e información:</p>
+            <p>Email: info@campingdelsordo.es</p>
+            <p>Teléfono: +34 0123 456789</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Camping del Sordo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+// Validazione del form di prenotazione
+document.querySelector('.booking-form').addEventListener('submit', function(e) {
+    e.preventDefault(); // Previene il submit normale del form
+    var isValid = true;
+    var inputs = this.querySelectorAll('input');
+
+    inputs.forEach(function(input) {
+        if (!input.value) {
+            isValid = false;
+            input.style.borderColor = 'red';
+        } else {
+            input.style.borderColor = 'initial';
+        }
+    });
+
+    if (isValid) {
+        alert('Prenotazione inviata con successo!');
+        // Qui puoi aggiungere il codice per inviare il form, come AJAX o fetch API
+    } else {
+        alert('Per favore, completa tutti i campi.');
+    }
+});
+</script>
+
+</body>
+</html>
