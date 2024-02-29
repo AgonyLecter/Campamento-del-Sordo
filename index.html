@@ -221,9 +221,17 @@
             <form class="booking-form">
                 <input type="text" placeholder="Nombre completo" required>
                 <input type="email" placeholder="Correo electrónico" required>
-                <input type="date" required>
                 
-                <!-- Nuovo campo per il numero di persone -->
+                <!-- Campi per le date di arrivo e partenza -->
+                <div style="margin-top: 10px;">
+                    <label for="check-in">Fecha de llegada:</label>
+                    <input type="date" id="check-in" name="check-in" required>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label for="check-out">Fecha de salida:</label>
+                    <input type="date" id="check-out" name="check-out" required>
+                </div>
+                
                 <input type="number" placeholder="Numero di persone" required style="margin-top: 10px;">
     
                 <!-- Scelta tra camper o tenda con icone -->
@@ -242,6 +250,7 @@
             </form>
         </div>
     </section>
+    
     
 
     <section class="contact" id="contact">
