@@ -222,10 +222,27 @@
                 <input type="text" placeholder="Nombre completo" required>
                 <input type="email" placeholder="Correo electrónico" required>
                 <input type="date" required>
-                <button type="submit">Reservar Ahora</button>
+                
+                <!-- Nuovo campo per il numero di persone -->
+                <input type="number" placeholder="Numero di persone" required style="margin-top: 10px;">
+    
+                <!-- Scelta tra camper o tenda con icone -->
+                <div style="margin-top: 10px; text-align: center;">
+                    <label>
+                        <input type="radio" name="accommodation" value="camper" required>
+                        <img src="camper.png" alt="Camper" style="width: 50px; vertical-align: middle; cursor: pointer;">
+                    </label>
+                    <label>
+                        <input type="radio" name="accommodation" value="tenda" required>
+                        <img src="tenda.png" alt="Tenda" style="width: 50px; vertical-align: middle; cursor: pointer;">
+                    </label>
+                </div>
+    
+                <button type="submit" style="margin-top: 10px;">Reservar Ahora</button>
             </form>
         </div>
     </section>
+    
 
     <section class="contact" id="contact">
         <div class="container">
@@ -269,4 +286,3 @@
 
 </body>
 </html>
-
