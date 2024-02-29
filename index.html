@@ -38,8 +38,8 @@
         header img.logo {
             display: block;
             margin: 10px auto;
-            width: 80%; /* Adjusted for better responsiveness */
-            max-width: 144px; /* Ensures the logo does not become too large */
+            width: 80%;
+            max-width: 144px;
             transition: transform 0.3s ease-in-out;
         }
 
@@ -47,12 +47,12 @@
             list-style: none;
             padding: 0;
             text-align: center;
-            margin-top: 20px; /* Added space above navigation links */
+            margin-top: 20px;
         }
 
         nav ul li {
-            display: inline-block; /* Changed from inline for better control on mobile */
-            margin: 0 5px; /* Reduced margin for smaller screens */
+            display: inline-block;
+            margin: 0 5px;
         }
 
         nav ul li a {
@@ -60,7 +60,7 @@
             text-decoration: none;
             font-weight: 700;
             transition: color 0.3s ease-in-out;
-            padding: 5px 10px; /* Added padding for larger touch targets */
+            padding: 5px 10px;
         }
 
         .welcome, .services, .contact, .gallery, .booking {
@@ -79,9 +79,13 @@
             padding: 0;
         }
 
+        .services ul li {
+            margin-bottom: 15px; /* Aumento interlinea e rendo le voci cliccabili */
+        }
+
         .gallery .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Improved for responsiveness */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
 
@@ -90,6 +94,21 @@
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img {
+            cursor: zoom-in; /* Stile del cursore per indicare l'azione */
+        }
+
+        .full-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1050; /* Assicura che sia sopra agli altri contenuti */
+            cursor: zoom-out; /* Cambia lo stile del cursore */
         }
 
         .booking-form input, .booking-form button {
@@ -120,15 +139,15 @@
             }
 
             header h1 {
-                font-size: 2rem; /* Smaller font size for smaller screens */
+                font-size: 2rem;
             }
 
             nav ul li {
-                margin: 0 10px; /* Adjusted margin for better spacing */
+                margin: 0 10px;
             }
 
             .gallery .photo-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjusted for smaller screens */
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
 
@@ -175,12 +194,12 @@
         <div class="container">
             <h2>Servicios Ofrecidos</h2>
             <ul>
-                <li>Parcelas para tiendas y autocaravanas</li>
-                <li>Acceso directo a la playa</li>
-                <li>Zona de barbacoa y picnic</li>
-                <li>Duchas y servicios higiénicos</li>
-                <li>Wi-Fi gratuito</li>
-                <li>Eventos</li>
+                <li><a href="parcelas.html">Parcelas para tiendas y autocaravanas</a></li>
+                <li><a href="playa.html">Acceso directo a la playa</a></li>
+                <li><a href="barbacoa.html">Zona de barbacoa y picnic</a></li>
+                <li><a href="duchas.html">Duchas y servicios higiénicos</a></li>
+                <li><a href="wifi.html">Wi-Fi gratuito</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
             </ul>
         </div>
     </section>
@@ -191,6 +210,7 @@
             <div class="photo-grid">
                 <img src="image1.jpg" alt="Descripción de la imagen 1">
                 <img src="image2.jpg" alt="Descripción de la imagen 2">
+                <!-- Altre immagini se necessario -->
             </div>
         </div>
     </section>
@@ -224,28 +244,27 @@
 </footer>
 
 <script>
-// Validazione del form di prenotazione
-document.querySelector('.booking-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Previene il submit normale del form
-    var isValid = true;
-    var inputs = this.querySelectorAll('input');
-
-    inputs.forEach(function(input) {
-        if (!input.value) {
-            isValid = false;
-            input.style.borderColor = 'red';
-        } else {
-            input.style.borderColor = 'initial';
-        }
+    // Funzionalità per ingrandire le immagini al click
+    document.querySelectorAll('.gallery img').forEach(img => {
+        img.addEventListener('click', function() {
+            if (this.classList.contains('full-screen')) {
+                this.classList.remove('full-screen');
+                this.style = ''; // Rimuove tutti gli stili inline
+            } else {
+                this.classList.add('full-screen');
+            }
+        });
     });
 
-    if (isValid) {
-        alert('Prenotazione inviata con successo!');
-        // Qui puoi aggiungere il codice per inviare il form, come AJAX o fetch API
-    } else {
-        alert('Per favore, completa tutti i campi.');
-    }
-});
+    // Resetta lo stile delle immagini se l'utente clicca fuori dall'immagine ingrandita
+    document.addEventListener('click', function(e) {
+        if (e.target.tagName !== 'IMG') {
+            document.querySelectorAll('.gallery img.full-screen').forEach(img => {
+                img.classList.remove('full-screen');
+                img.style = ''; // Rimuove tutti gli stili inline
+            });
+        }
+    });
 </script>
 
 </body>
