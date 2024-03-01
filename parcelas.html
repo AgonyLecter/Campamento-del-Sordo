@@ -83,14 +83,59 @@
             display: block;
             margin: 20px auto;
             border-radius: 8px;
+            cursor: pointer; /* Aggiunta per indicare all'utente che l'immagine è cliccabile */
         }
 
-        footer {
-            background: linear-gradient(180deg, #a67b5b 0%, #8c6954 100%);
-            color: #ffffff;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 20px;
+        /* Stile per l'immagine ingrandita a schermo intero */
+        .modal {
+            display: none; /* Nascosto di default */
+            position: fixed; /* Rimane in posizione fissa */
+            z-index: 1000; /* Sopra agli altri elementi */
+            padding-top: 100px; /* Posizionato a 100px dall'alto */
+            left: 0;
+            top: 0;
+            width: 100%; /* Larghezza piena */
+            height: 100%; /* Altezza piena */
+            overflow: auto; /* Abilita lo scroll se necessario */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Nero con opacità */
+        }
+
+        /* Stile per l'immagine all'interno del modal */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Aggiunge un effetto zoom all'apertura del modal */
+        .modal-content, .close {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        /* Stile per il bottone di chiusura */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
         }
 
         @keyframes fadeIn {
@@ -129,18 +174,41 @@
         <div class="container">
             <h2>Parcelas para Tiendas y Autocaravanas</h2>
             <p>Disfruta de la naturaleza y la comodidad en nuestras parcelas diseñadas para tiendas y autocaravanas. Cada parcela está equipada con todos los servicios necesarios para garantizar una estancia agradable y relajante.</p>
-            <img src="parcelas1.jpg" alt="Vista de las parcelas">
-            <img src="parcelas2.jpg" alt="Parcelas con servicios">
+            <img src="parcelas1.jpg" alt="Vista de las parcelas" onclick="openModal(this.src, this.alt)">
+            <img src="parcelas2.jpg" alt="Parcelas con servicios" onclick="openModal(this.src, this.alt)">
             <!-- Agrega más imágenes según sea necesario -->
         </div>
     </section>
 </main>
+
+<!-- Il Modal che verrà visualizzato al clic dell'immagine -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
 
 <footer>
     <div class="container">
         <p>&copy; 2024 Camping del Sordo. Todos los derechos reservados.</p>
     </div>
 </footer>
+
+<script>
+    function openModal(src, alt) {
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = src;
+        captionText.innerHTML = alt;
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
+</script>
 
 </body>
 </html>
