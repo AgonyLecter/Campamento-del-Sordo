@@ -97,18 +97,7 @@
         }
 
         .gallery img {
-            cursor: zoom-in; /* Stile del cursore per indicare l'azione */
-        }
-
-        .full-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1050; /* Assicura che sia sopra agli altri contenuti */
-            cursor: zoom-out; /* Cambia lo stile del cursore */
+            cursor: pointer; /* Stile del cursore aggiornato per indicare l'azione */
         }
 
         .booking-form input, .booking-form button {
@@ -162,6 +151,51 @@
             0% {background: linear-gradient(180deg, #f7ca88 0%, #e8dab2 100%);}
             100% {background: linear-gradient(180deg, #e8dab2 0%, #f7ca88 100%);}
         }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -186,13 +220,10 @@
     <section class="welcome" id="welcome">
         <div class="container">
             <h2>Bienvenidos al Camping del Sordo</h2>
-            <p>"Bienvenidos al paraíso del descanso y la naturaleza, el Camping del Sordo. Un refugio donde el azul del cielo se funde con el dorado de nuestras playas privadas, ofreciéndote una experiencia única en el corazón de Tenerife. Aquí, cada amanecer te invita a disfrutar de momentos inolvidables bajo el sol, rodeado de una naturaleza salvaje que acaricia el alma.
-
-Descubre el encanto sin igual de un espacio diseñado para tu total relajación, donde el murmullo de las olas se convierte en la banda sonora de tus días. En el Camping del Sordo, cada detalle está pensado para ofrecerte comodidad y calidad, con servicios que evolucionan constantemente para superar tus expectativas.
-
-Ven a sumergirte en la calidez de nuestra hospitalidad, donde el espíritu de Tenerife se vive en cada rincón. Disfruta de la exclusividad de nuestras instalaciones, ideales para quienes buscan desconectar en un entorno de belleza incomparable. El sol, la playa y una oferta en constante crecimiento te esperan para hacer de tu estancia una experiencia inolvidable.
-
-Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para regalarte momentos mágicos. Bienvenido al Camping del Sordo, tu rincón especial en Tenerife."</p>
+            <p>"Bienvenidos al paraíso del descanso y la naturaleza, el Camping del Sordo. Un refugio donde el azul del cielo se funde con el dorado de nuestras playas privadas, ofreciéndote una experiencia única en el corazón de Tenerife. Aquí, cada amanecer te invita a disfrutar de momentos inolvidables bajo el sol, rodeado de una naturaleza salvaje que acaricia el alma.</p>
+            <p>Descubre el encanto sin igual de un espacio diseñado para tu total relajación, donde el murmullo de las olas se convierte en la banda sonora de tus días. En el Camping del Sordo, cada detalle está pensado para ofrecerte comodidad y calidad, con servicios que evolucionan constantemente para superar tus expectativas.</p>
+            <p>Ven a sumergirte en la calidez de nuestra hospitalidad, donde el espíritu de Tenerife se vive en cada rincón. Disfruta de la exclusividad de nuestras instalaciones, ideales para quienes buscan desconectar en un entorno de belleza incomparable. El sol, la playa y una oferta en constante crecimiento te esperan para hacer de tu estancia una experiencia inolvidable.</p>
+            <p>Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para regalarte momentos mágicos. Bienvenido al Camping del Sordo, tu rincón especial en Tenerife."</p>
         </div>
     </section>
 
@@ -217,9 +248,9 @@ Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para 
         <div class="container">
             <h2>Galería Fotográfica</h2>
             <div class="photo-grid">
-                <img src="image1.jpg" alt="Descripción de la imagen 1">
-                <img src="image2.jpg" alt="Descripción de la imagen 2">
-                <!-- Altre immagini se necessario -->
+                <img src="image1.jpg" alt="Descripción de la imagen 1" onclick="openModal(this);">
+                <img src="image2.jpg" alt="Descripción de la imagen 2" onclick="openModal(this);">
+                <!-- More images as needed -->
             </div>
         </div>
     </section>
@@ -230,8 +261,6 @@ Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para 
             <form class="booking-form">
                 <input type="text" placeholder="Nombre completo" required>
                 <input type="email" placeholder="Correo electrónico" required>
-                
-                <!-- Campi per le date di arrivo e partenza -->
                 <div style="margin-top: 10px;">
                     <label for="check-in">Fecha de llegada:</label>
                     <input type="date" id="check-in" name="check-in" required>
@@ -240,10 +269,7 @@ Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para 
                     <label for="check-out">Fecha de salida:</label>
                     <input type="date" id="check-out" name="check-out" required>
                 </div>
-                
                 <input type="number" placeholder="Numero di persone" required style="margin-top: 10px;">
-    
-                <!-- Scelta tra camper o tenda con icone -->
                 <div style="margin-top: 10px; text-align: center;">
                     <label>
                         <input type="radio" name="accommodation" value="camper" required>
@@ -254,12 +280,11 @@ Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para 
                         <img src="tenda.png" alt="Tenda" style="width: 50px; vertical-align: middle; cursor: pointer;">
                     </label>
                 </div>
-    
                 <button type="submit" style="margin-top: 10px;">Reservar Ahora</button>
             </form>
         </div>
     </section>
-    
+
     <section class="contact" id="contact">
         <div class="container">
             <h2>Contacto</h2>
@@ -276,30 +301,40 @@ Bienvenido a tu escapada perfecta, donde el relax, el sol y el mar se unen para 
     </div>
 </footer>
 
-<script>
-    // Funzionalità per ingrandire le immagini al click
-    document.querySelectorAll('.gallery img').forEach(img => {
-        img.addEventListener('click', function() {
-            if (this.classList.contains('full-screen')) {
-                this.classList.remove('full-screen');
-                this.style = ''; // Rimuove tutti gli stili inline
-            } else {
-                this.classList.add('full-screen');
-            }
-        });
-    });
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+</div>
 
-    // Resetta lo stile delle immagini se l'utente clicca fuori dall'immagine ingrandita
-    document.addEventListener('click', function(e) {
-        if (e.target.tagName !== 'IMG') {
-            document.querySelectorAll('.gallery img.full-screen').forEach(img => {
-                img.classList.remove('full-screen');
-                img.style = ''; // Rimuove tutti gli stili inline
-            });
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Function to open the modal
+    function openModal(img) {
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        captionText.innerHTML = img.alt;
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    // Close the modal if the user clicks anywhere outside of the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
         }
-    });
+    }
 </script>
 
 </body>
 </html>
+
 
