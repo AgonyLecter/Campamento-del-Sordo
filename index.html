@@ -14,27 +14,27 @@
             transition: background-color 0.5s;
             animation: fadeBackground 10s infinite alternate;
         }
-
+    
         .container {
             max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
-
+    
         header {
             background: linear-gradient(135deg, #d3a87c 0%, #e8b985 100%);
             color: #ffffff;
             padding: 20px 0;
             position: relative;
         }
-
+    
         header h1 {
             margin: 0;
             text-align: center;
             font-family: 'Lobster', cursive;
             font-size: 2.5rem;
         }
-
+    
         header img.logo {
             display: block;
             margin: 10px auto;
@@ -42,27 +42,34 @@
             max-width: 144px;
             transition: transform 0.3s ease-in-out;
         }
-
+    
         nav ul {
             list-style: none;
             padding: 0;
             text-align: center;
             margin-top: 20px;
         }
-
+    
         nav ul li {
             display: inline-block;
             margin: 0 5px;
         }
-
+    
         nav ul li a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 700;
-            transition: color 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
             padding: 5px 10px;
+            border-radius: 5px; /* Angoli arrotondati */
         }
-
+    
+        nav ul li a:hover {
+            color: #f7ca88; /* Cambia il colore al passaggio del mouse */
+            background-color: #d3a87c; /* Colore di sfondo al passaggio del mouse */
+            transform: scale(1.05); /* Leggero ingrandimento */
+        }
+    
         .welcome, .services, .contact, .gallery, .booking {
             margin-bottom: 40px;
             background-color: #ffffff;
@@ -73,33 +80,39 @@
             transform: translateY(20px);
             animation: fadeIn 1.5s forwards;
         }
-
+    
         .services ul, .gallery .photo-grid, .booking-form {
             list-style: none;
             padding: 0;
         }
-
+    
         .services ul li {
             margin-bottom: 15px; /* Aumento interlinea e rendo le voci cliccabili */
         }
-
+    
+        .services ul li a {
+            color: #000000; /* Colore di base del testo per i link dei servizi */
+            background-color: transparent; /* Sfondo trasparente di base */
+            display: inline-block; /* Permette la trasformazione */
+        }
+    
         .gallery .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
-
+    
         .gallery img, .booking-form input, .booking-form button {
             width: 100%;
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease-in-out;
         }
-
+    
         .gallery img {
-            cursor: pointer; /* Stile del cursore aggiornato per indicare l'azione */
+            cursor: pointer;
         }
-
+    
         .booking-form input, .booking-form button {
             padding: 10px;
             margin: 5px 0;
@@ -107,13 +120,13 @@
             background: #e8dab2;
             color: #333;
         }
-
+    
         .booking-form button {
             background: #d3a87c;
             color: #ffffff;
             cursor: pointer;
         }
-
+    
         footer {
             background: linear-gradient(180deg, #a67b5b 0%, #8c6954 100%);
             color: #ffffff;
@@ -121,37 +134,37 @@
             padding: 20px 0;
             margin-top: 20px;
         }
-
+    
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
             }
-
+    
             header h1 {
                 font-size: 2rem;
             }
-
+    
             nav ul li {
                 margin: 0 10px;
             }
-
+    
             .gallery .photo-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
-
+    
         @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
+    
         @keyframes fadeBackground {
             0% {background: linear-gradient(180deg, #f7ca88 0%, #e8dab2 100%);}
             100% {background: linear-gradient(180deg, #e8dab2 0%, #f7ca88 100%);}
         }
-
+    
         /* Modal styles */
         .modal {
             display: none; /* Hidden by default */
@@ -165,14 +178,14 @@
             background-color: rgb(0,0,0); /* Fallback color */
             background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
         }
-
+    
         .modal-content {
             margin: auto;
             display: block;
             width: 80%;
             max-width: 700px;
         }
-
+    
         .close {
             position: absolute;
             top: 15px;
@@ -182,14 +195,14 @@
             font-weight: bold;
             transition: 0.3s;
         }
-
+    
         .close:hover,
         .close:focus {
             color: #bbb;
             text-decoration: none;
             cursor: pointer;
         }
-
+    
         /* 100% Image Width on Smaller Screens */
         @media only screen and (max-width: 700px) {
             .modal-content {
@@ -197,6 +210,7 @@
             }
         }
     </style>
+    
 </head>
 <body>
 
